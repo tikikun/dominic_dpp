@@ -15,5 +15,11 @@ RUN make install
 # Build the dominic_discord_project
 WORKDIR /workspace
 COPY . .
+WORKDIR ./build
+RUN cmake ..
+RUN make -j "$(nproc)"
+
+# Reset workdir
+WORKDIR /workspace
 
 ENTRYPOINT [ "/bin/bash" ]
