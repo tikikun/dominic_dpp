@@ -16,10 +16,10 @@ file(GLOB_RECURSE MAIN_SRC src/*.cc)
 add_executable(${PROJECT_NAME} ${MAIN_SRC})
 
 # Specify the include directories for the dpp library (if needed)
-# include_directories(path/to/dpp/includes)
+include_directories(/workspace/include/)
 
 # Specify the link directories for the dpp library (if needed)
 # link_directories(path/to/dpp/libraries)
 
 # Link the dpp library to the main executable
-target_link_libraries(${PROJECT_NAME} PRIVATE dpp) # Replace "dpp" with the actual name of the dpp library (without the 'lib' prefix and file extension)
+target_link_libraries(${PROJECT_NAME} PRIVATE dpp ssl crypto) # Replace "dpp" with the actual name of the dpp library (without the 'lib' prefix and file extension)
