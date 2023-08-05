@@ -6,7 +6,7 @@ int main()
 {
     unsigned int num_cores(std::thread::hardware_concurrency());
     // create a bot object with your Discord bot token
-    dpp::cluster dominic("MTA5MjI0NzExMzg4ODQ0ODUyMg.GyoD2C.nvCoqDhqtjJwmj5_d5-2UC91bwMN4046WBLqmc", dpp::i_default_intents, num_cores);
+    dpp::cluster dominic("MTA5MjI0NzExMzg4ODQ0ODUyMg.GyoD2C.nvCoqDhqtjJwmj5_d5-2UC91bwMN4046WBLqmc", dpp::i_default_intents, 10);
     dominic.on_log(dpp::utility::cout_logger());
 
     dominic.on_slashcommand([&dominic](const dpp::slashcommand_t &event)
