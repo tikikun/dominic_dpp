@@ -20,7 +20,7 @@ int main()
             steps = std::get<int64_t>(event.get_parameter("steps"));
             } catch (const std::bad_variant_access&) {
                 negative_prompt = "NSFW, sex, porn";
-                steps = 20;
+                steps = 30;
             }
             std::random_device rd;  // Will be used to obtain a seed for the random number engine
             std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
