@@ -30,7 +30,7 @@ int main()
             dpp::json inference_payload = {
             {"prompt", prompt},
             {"neg_prompt", negative_prompt},
-            {"unet_model", "meinamix"},
+            {"unet_model", "dreamshaper_7"},
             {"seed", random_number},
             {"steps", steps}
         };
