@@ -22,4 +22,4 @@ RUN make -j "$(nproc)"
 # Reset workdir
 WORKDIR /workspace
 
-ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "/workspace/build/bin/gcc_dominic_dpp"]
