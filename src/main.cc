@@ -1,17 +1,14 @@
 #define CPPHTTPLIB_OPENSSL_SUPPORT
 #include "httplib.h"
 #include <dpp/dpp.h> // include the D++ library
-#include <iostream>
-#include <random>
-#include <chrono>
 
 int main()
 {
+    unsigned int num_cores(std::thread::hardware_concurrency());
     // create a bot object with your Discord bot token
-    dpp::cluster dominic("MTA5MjI0NzExMzg4ODQ0ODUyMg.GyoD2C.nvCoqDhqtjJwmj5_d5-2UC91bwMN4046WBLqmc");
+    dpp::cluster dominic("MTA5MjI0NzExMzg4ODQ0ODUyMg.GyoD2C.nvCoqDhqtjJwmj5_d5-2UC91bwMN4046WBLqmc", dpp::i_default_intents, num_cores);
     dominic.on_log(dpp::utility::cout_logger());
-    dpp::message msg(1093368776910716979, "Bot is up!");
-    dominic.message_create(msg);
+
     dominic.on_slashcommand([&dominic](const dpp::slashcommand_t &event)
                             {
          if (event.command.get_command_name() == "imagine") {
@@ -19,10 +16,10 @@ int main()
             std::string negative_prompt ;
             int64_t steps;
             try {
-            negative_prompt = std::get<std::string>(event.get_parameter("negative_prompt"));
+            negative_prompt = "NSFW, sex, porn "+std::get<std::string>(event.get_parameter("negative_prompt"));
             steps = std::get<int64_t>(event.get_parameter("steps"));
             } catch (const std::bad_variant_access&) {
-                negative_prompt = "NONE";
+                negative_prompt = "NSFW, sex, porn";
                 steps = 20;
             }
             std::random_device rd;  // Will be used to obtain a seed for the random number engine
@@ -59,6 +56,7 @@ int main()
 
     dominic.on_ready([&dominic](const dpp::ready_t &event)
                      {
+        dominic.log(dpp::loglevel::ll_info, "Bot is up with shard id: " + std::to_string(event.shard_id));
         if (dpp::run_once<struct register_bot_commands>()) {
             dpp::slashcommand imagine("imagine","Type your description of the image you want",dominic.me.id);
             dpp::command_option prompt_option(dpp::co_string,"prompt","Description of your image",true);
