@@ -3,7 +3,7 @@ FROM gcc:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install DPP
-RUN apt update && apt install --no-install-recommends -y libssl-dev zlib1g-dev libsodium-dev libopus-dev cmake pkg-config git gh && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install --no-install-recommends -y libssl-dev zlib1g-dev libsodium-dev libopus-dev cmake clang-format pkg-config git gh && apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN git clone https://github.com/brainboxdotcc/DPP /usr/src/DPP
 WORKDIR /usr/src/DPP
 RUN git checkout v10.0.24
