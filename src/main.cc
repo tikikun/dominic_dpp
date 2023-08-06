@@ -8,7 +8,7 @@ int main() {
   // create a bot object with your Discord bot token
   dpp::cluster dominic("MTA5MjI0NzExMzg4ODQ0ODUyMg.GyoD2C.nvCoqDhqtjJwmj5_d5-"
                        "2UC91bwMN4046WBLqmc",
-                       dpp::i_default_intents, 1);
+                       dpp::i_default_intents, 10);
   dominic.on_log(dpp::utility::cout_logger());
 
   dominic.on_slashcommand([&dominic](const dpp::slashcommand_t &event) {
