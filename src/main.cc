@@ -8,7 +8,7 @@ int main() {
   // create a bot object with your Discord bot token
   dpp::cluster dominic("MTA5MjI0NzExMzg4ODQ0ODUyMg.GyoD2C.nvCoqDhqtjJwmj5_d5-"
                        "2UC91bwMN4046WBLqmc",
-                       dpp::i_default_intents, 10);
+                       dpp::i_default_intents, 1);
   dominic.on_log(dpp::utility::cout_logger());
 
   dominic.on_slashcommand([&dominic](const dpp::slashcommand_t &event) {
@@ -40,14 +40,15 @@ int main() {
       std::string inference_payload_string = inference_payload.dump();
       std::string result_url;
       dominic.request("https://sd-inference.jan.ai/sd_inference", dpp::m_post,
-                      [](const dpp::http_request_completion_t &cc) {
+                      [event](const dpp::http_request_completion_t &cc) {
                         dpp::json json_body = dpp::json::parse(cc.body);
+                        event.reply(json_body["url"].get<std::string>());
+                        return;
                       },
                       inference_payload_string, "application/json",
                       {{"Content-Type", "application/json"}});
       std::this_thread::sleep_for(std::chrono::milliseconds(200));
       dominic.log(dpp::loglevel::ll_info, "Finished processing an image");
-      event.reply(result_url);
       return;
     }
   });
