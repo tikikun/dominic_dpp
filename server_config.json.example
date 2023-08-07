@@ -1,5 +1,6 @@
 {
-    "api_bot_key":"YOUR_TOKEN_GO_HERE",
+    "api_bot_key":"YOUR_BOT_KEY_HERE",
     "negative_prompt_prefix":"NSFW, sex, porn ",
-    "unet_model":"dreamshaper_7"
+    "unet_model":"dreamshaper_7",
+    "shard_number":10
 }
