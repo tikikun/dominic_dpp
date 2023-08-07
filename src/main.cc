@@ -1,5 +1,3 @@
-#define CPPHTTPLIB_OPENSSL_SUPPORT
-// #include "httplib.h"
 #include <dpp/dpp.h> // include the D++ library
 #include <random>
 
