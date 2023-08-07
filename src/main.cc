@@ -26,8 +26,9 @@ int main() {
   std::string api_bot_key = jsonConfig["api_bot_key"];
   std::string negative_prompt_prefix = jsonConfig["negative_prompt_prefix"];
   std::string configured_unet_model = jsonConfig["unet_model"];
+  int shard_number = jsonConfig["shard_number"];
 
-  dpp::cluster dominic(api_bot_key, dpp::i_default_intents, 10);
+  dpp::cluster dominic(api_bot_key, dpp::i_default_intents, shard_number);
   dominic.on_log(dpp::utility::cout_logger());
 
   dominic.on_slashcommand([&dominic, &negative_prompt_prefix,
