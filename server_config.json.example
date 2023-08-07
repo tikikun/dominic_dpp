@@ -1,0 +1,5 @@
+{
+    "api_bot_key":"YOUR_TOKEN_GO_HERE",
+    "negative_prompt_prefix":"NSFW, sex, porn ",
+    "unet_model":"dreamshaper_7"
+}
