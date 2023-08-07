@@ -22,4 +22,4 @@ include_directories(/workspace/include/)
 # link_directories(path/to/dpp/libraries)
 
 # Link the dpp library to the main executable
-target_link_libraries(${PROJECT_NAME} PRIVATE dpp ssl crypto) # Replace "dpp" with the actual name of the dpp library (without the 'lib' prefix and file extension)
+target_link_libraries(${PROJECT_NAME} PRIVATE dpp) # Replace "dpp" with the actual name of the dpp library (without the 'lib' prefix and file extension)
